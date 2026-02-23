@@ -20,36 +20,40 @@
         <div class="content">
             <div class="left">
                 <div class="card_preview">
-                    <div class="card">
-                        <div class="card_wrapper" id="card_wrapper_target">
-                            <div class="header">
-                                <div class="logo">
-                                    <img src="log.svg" alt="logo">
+                    <div class="export_stage" id="export_target">
+                        <div class="card_back_edge"></div>
+
+                        <div class="card" id="card_wrapper_target">
+                            <div class="hud_lines"></div>
+
+                            <div class="brand_row">
+                                <img src="log.svg" alt="Seismic logo">
+                            </div>
+
+                            <div class="card_body">
+                                <div class="portrait_panel">
+                                    <img id="profile_image" src="profile.jpg" alt="profile">
+                                </div>
+
+                                <div class="profile_text">
+                                    <p><span>Name:</span> <strong id="profile_card_name">John Doe</strong></p>
+                                    <p><span>Rank:</span> <strong id="profile_rank">Mag 1</strong></p>
+                                    <p><span>Specialty:</span> <strong id="profile_specialty">CEO</strong></p>
                                 </div>
                             </div>
-                            <div class="middle_content">
-                                <div class="image_framer_wrapper">
-                                    <div class="image_frame">
-                                        <div class="overlay"></div>
-                                        <img id="profile_image" src="profile.jpg" alt="profile">
-                                        <div class="mag_frame">
-                                            <img src="/mag_1.png" id="mag_frame_img" alt="mag badge">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text_content">
-                                    <div>Name: <span id="profile_card_name" class="profile_name_text"></span></div>
-                                    <div>Rank: <span id="profile_rank" class="profile_name_text"></span></div>
-                                    <div>Specialty: <span id="profile_specialty" class="profile_name_text"></span></div>
-                                </div>
+
+                            <div class="mag_frame">
+                                <img src="mag_1.png" id="mag_frame_img" alt="mag badge">
                             </div>
+
                             <footer>
-                                <p>Encrypted Citizen</p>
+                                <p>ENCRYPTED CITIZEN</p>
                             </footer>
                         </div>
                     </div>
+
                     <div class="download_btn">
-                        <button id="download_btn_action">Download image</button>
+                        <button id="download_btn_action" type="button">Download card image</button>
                     </div>
                 </div>
             </div>
@@ -57,15 +61,15 @@
             <div class="right">
                 <div class="card_input">
                     <p class="header">Profile Details</p>
-                  
+
                     <div class="profile_input">
                         <div class="profile_name">
                             <label for="profile_name_input">Profile name:</label>
-                            <input type="text" id="profile_name_input" placeholder="John">
+                            <input type="text" id="profile_name_input" placeholder="John Doe">
                         </div>
 
                         <div class="profile_image">
-                            <label for="profile_image_upload">Profile image: </label>
+                            <label for="profile_image_upload">Profile image:</label>
                             <input type="file" id="profile_image_upload" accept="image/*">
                         </div>
 
@@ -87,6 +91,7 @@
                         <div class="specialty">
                             <label for="specialty_input">Specialty:</label>
                             <select name="specialty" id="specialty_input">
+                                <option value="CEO">CEO</option>
                                 <option value="Builder">Builder</option>
                                 <option value="Artist">Artist</option>
                                 <option value="Content Creator">Content Creator</option>
