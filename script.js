@@ -11,6 +11,8 @@ const cardMagBadge = document.getElementById("mag_frame_img");
 const cardRank = document.getElementById("profile_rank");
 const cardSpecialty = document.getElementById("profile_specialty");
 const cardWrapper = document.getElementById("card_wrapper_target");
+const rankAccent = document.getElementById("rank_accent");
+const exportTarget = document.getElementById("export_target");
 const displayName = document.querySelector(".card_header .identity .name");
 
 // Download Elements
@@ -18,19 +20,20 @@ const downloadBtn = document.getElementById("download_btn_action");
 
 const hasGeneratorElements =
     nameInput && imageUpload && rankSelect && specialtySelect &&
-    cardName && cardImage && cardMagBadge && cardRank && cardSpecialty && cardWrapper && downloadBtn;
+    cardName && cardImage && cardMagBadge && cardRank && cardSpecialty && cardWrapper &&
+    rankAccent && exportTarget && downloadBtn;
 
 if (hasGeneratorElements) {
     const rankTone = {
-        "1": "#d8d8d8",
-        "2": "#b2d8f2",
-        "3": "#afdbc7",
-        "4": "#f0d49b",
-        "5": "#f3c2b4",
-        "6": "#f2b7b7",
-        "7": "#f5a780",
-        "8": "#ec8d7f",
-        "9": "#cf9adb"
+        "1": "#F7EAB7",
+        "2": "#50E3C2",
+        "3": "#7ED321",
+        "4": "#BDFF8C",
+        "5": "#B8E986",
+        "6": "#F8E71C",
+        "7": "#F5A623",
+        "8": "#F1442E",
+        "9": "#55CDFC"
     };
 
     const updateDisplayName = (value) => {
@@ -47,7 +50,8 @@ if (hasGeneratorElements) {
         cardMagBadge.src = `mag_${rankValue}.png`;
 
         const selectedTone = rankTone[rankValue] || "#f5f5f5";
-        cardWrapper.style.background = `linear-gradient(140deg, #ffffff 0%, ${selectedTone} 100%)`;
+        rankAccent.style.background = selectedTone;
+        cardWrapper.style.background = `linear-gradient(140deg, #ffffff 0%, ${selectedTone}44 100%)`;
     };
 
     updateDisplayName(nameInput.value);
@@ -77,20 +81,23 @@ if (hasGeneratorElements) {
 
     downloadBtn.addEventListener("click", async () => {
         const originalText = downloadBtn.textContent;
-        downloadBtn.textContent = "Preparing image...";
+        downloadBtn.textContent = "Preparing mockup...";
         downloadBtn.disabled = true;
 
         try {
-            const dataUrl = await domtoimage.toPng(cardWrapper, {
+            const width = exportTarget.offsetWidth;
+            const height = exportTarget.offsetHeight;
+
+            const dataUrl = await domtoimage.toPng(exportTarget, {
                 quality: 1,
-                bgcolor: "#ffffff",
-                width: cardWrapper.offsetWidth * 3,
-                height: cardWrapper.offsetHeight * 3,
+                bgcolor: "#8a603d",
+                width: width * 2,
+                height: height * 2,
                 style: {
-                    transform: "scale(3)",
+                    transform: "scale(2)",
                     transformOrigin: "top left",
-                    width: `${cardWrapper.offsetWidth}px`,
-                    height: `${cardWrapper.offsetHeight}px`
+                    width: `${width}px`,
+                    height: `${height}px`
                 }
             });
 
@@ -100,7 +107,7 @@ if (hasGeneratorElements) {
 
             const safeName = (nameInput.value.trim() || "Seismic").replace(/\s+/g, "_");
             const link = document.createElement("a");
-            link.download = `${safeName}_Card.png`;
+            link.download = `${safeName}_mockup.png`;
             link.href = objectUrl;
             document.body.appendChild(link);
             link.click();
