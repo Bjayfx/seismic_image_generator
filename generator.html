@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seismic Image Generator</title>
+    <link rel="stylesheet" href="generator.css">
+</head>
+<body>
+    <header>
+       <div class="top_head">
+            Seismic is backed by $17M led by a16z crypto
+        </div>
+        <div class="main_head">
+            <div class="logo">
+                <img src="log.svg" alt="logo">
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="left">
+                <div class="card_preview">
+                    <div class="card">
+                        <div class="card_wrapper" id="card_wrapper_target">
+                            <div class="header">
+                                <div class="logo">
+                                    <img src="log.svg" alt="logo">
+                                </div>
+                            </div>
+                            <div class="middle_content">
+                                <div class="image_framer_wrapper">
+                                    <div class="image_frame">
+                                        <div class="overlay"></div>
+                                        <img id="profile_image" src="profile.jpg" alt="profile">
+                                        <div class="mag_frame">
+                                            <img src="/mag_1.png" id="mag_frame_img" alt="mag badge">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text_content">
+                                    <div>Name: <span id="profile_card_name" class="profile_name_text"></span></div>
+                                    <div>Rank: <span id="profile_rank" class="profile_name_text"></span></div>
+                                    <div>Specialty: <span id="profile_specialty" class="profile_name_text"></span></div>
+                                </div>
+                            </div>
+                            <footer>
+                                <p>Encrypted Citizen</p>
+                            </footer>
+                        </div>
+                    </div>
+                    <div class="download_btn">
+                        <button id="download_btn_action">Download image</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="card_input">
+                    <p class="header">Profile Details</p>
+                  
+                    <div class="profile_input">
+                        <div class="profile_name">
+                            <label for="profile_name_input">Profile name:</label>
+                            <input type="text" id="profile_name_input" placeholder="John">
+                        </div>
+
+                        <div class="profile_image">
+                            <label for="profile_image_upload">Profile image: </label>
+                            <input type="file" id="profile_image_upload" accept="image/*">
+                        </div>
+
+                        <div class="rank">
+                            <label for="ranking_badge">Mag Rank:</label>
+                            <select name="ranking_badge" id="ranking_badge">
+                                <option value="1">Rank 1</option>
+                                <option value="2">Rank 2</option>
+                                <option value="3">Rank 3</option>
+                                <option value="4">Rank 4</option>
+                                <option value="5">Rank 5</option>
+                                <option value="6">Rank 6</option>
+                                <option value="7">Rank 7</option>
+                                <option value="8">Rank 8</option>
+                                <option value="9">Rank 9</option>
+                            </select>
+                        </div>
+
+                        <div class="specialty">
+                            <label for="specialty_input">Specialty:</label>
+                            <select name="specialty" id="specialty_input">
+                                <option value="Builder">Builder</option>
+                                <option value="Artist">Artist</option>
+                                <option value="Content Creator">Content Creator</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Suisseworks Webs", Georgia, sans-serif;
+}
+
+body{
+    background: linear-gradient(90deg, rgba(165, 42, 42, 0.039) 20%, white 80%);
+    display: flex;
+    height: screen;
+}
+header{
+    width: 100%;
+}
+.top_head{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: smaller;
+    justify-content: center;
+    align-content: center;
+    border: 0;
+    cursor: pointer;
+    height: 30px;
+    background-image: url("head_bg.avif");
+}
+.main_head{
+    padding-block-start: 20px;
+    padding-inline: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.left img{
+    width: 70%;
+}
+
+.right button{
+    border: none;
+    color: white;
+    padding-inline: 17px;
+    padding-block: 7px;
+    border-radius: 20px;
+    cursor: pointer;
+    background: rgba(148, 88, 88, 0.708);
+    transition: all ease-in-out ;
+}
+
+.right button:hover{
+    background: rgb(148, 88, 88);
+}
