@@ -22,6 +22,7 @@
                 <div class="card_preview">
                     <div class="card">
                         <div class="card_wrapper" id="card_wrapper_target">
+                            <div class="overlay"></div>
                             <div class="header">
                                 <div class="logo">
                                     <img src="log.svg" alt="logo">
@@ -30,17 +31,19 @@
                             <div class="middle_content">
                                 <div class="image_framer_wrapper">
                                     <div class="image_frame">
-                                        <div class="overlay"></div>
-                                        <img id="profile_image" src="profile.jpg" alt="profile">
+                                        <div class="frame">
+                                            <img src="image_frame.png" alt="frame" >
+                                        </div>
+                                        <img id="profile_image" src="profile.jpeg" alt="profile">
                                         <div class="mag_frame">
                                             <img src="/mag_1.png" id="mag_frame_img" alt="mag badge">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="text_content">
-                                    <div>Name: <span id="profile_card_name" class="profile_name_text"></span></div>
-                                    <div>Rank: <span id="profile_rank" class="profile_name_text"></span></div>
-                                    <div>Specialty: <span id="profile_specialty" class="profile_name_text"></span></div>
+                                    <div>Name: <span id="profile_card_name" class="profile_name_text">Bjay</span></div>
+                                    <div>Rank: <span id="profile_rank" class="profile_name_text">Mag 1</span></div>
+                                    <div>Specialty: <span id="profile_specialty" class="profile_name_text">Builder</span></div>
                                 </div>
                             </div>
                             <footer>
@@ -87,10 +90,10 @@
                         <div class="specialty">
                             <label for="specialty_input">Specialty:</label>
                             <select name="specialty" id="specialty_input">
-                                <option value="leader">Leader</option>
                                 <option value="Builder">Builder</option>
                                 <option value="Artist">Artist</option>
                                 <option value="Content Creator">Content Creator</option>
+                                <option value="Leader">Leader</option>
                             </select>
                         </div>
                     </div>
