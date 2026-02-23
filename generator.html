@@ -20,29 +20,42 @@
         <div class="content">
             <div class="left">
                 <div class="card_preview">
-                    <div class="export_stage" id="export_target">
+                    <div class="mockup_stage" id="export_target">
+                        <div class="mockup_glow"></div>
                         <div class="card_back_edge"></div>
 
-                        <div class="card" id="card_wrapper_target">
-                            <div class="hud_lines"></div>
+                        <div class="card_wrapper" id="card_wrapper_target">
+                            <div class="card_overlay_lines"></div>
+                            <div class="rank_stripe" id="rank_stripe"></div>
+                            <div class="accent_dot dot_top"></div>
+                            <div class="accent_dot dot_bottom"></div>
 
-                            <div class="brand_row">
-                                <img src="log.svg" alt="Seismic logo">
+                            <div class="card_header">
+                                <div>
+                                    <p class="title_name" id="profile_heading_name">TOBI GBADAMOSI</p>
+                                    <p class="title_role" id="profile_specialty">CEO</p>
+                                </div>
+                                <img src="log.svg" alt="logo">
+                            </div>
+
+                            <div class="card_meta_accessories">
+                                <div class="chip"></div>
+                                <p class="serial">SEISMIC // VERIFIED MEMBER</p>
                             </div>
 
                             <div class="card_body">
-                                <div class="portrait_panel">
+                                <div class="portrait_shell">
                                     <img id="profile_image" src="profile.jpg" alt="profile">
                                 </div>
 
                                 <div class="profile_text">
-                                    <p><span>Name:</span> <strong id="profile_card_name">John Doe</strong></p>
-                                    <p><span>Rank:</span> <strong id="profile_rank">Mag 1</strong></p>
-                                    <p><span>Specialty:</span> <strong id="profile_specialty">CEO</strong></p>
+                                    <p>Name: <strong id="profile_card_name">John Doe</strong></p>
+                                    <p>Rank: <strong id="profile_rank">Mag 1</strong></p>
+                                    <p>Specialty: <strong id="profile_specialty_text">CEO</strong></p>
                                 </div>
                             </div>
 
-                            <div class="mag_frame">
+                            <div class="badge_shell">
                                 <img src="mag_1.png" id="mag_frame_img" alt="mag badge">
                             </div>
 
@@ -53,7 +66,7 @@
                     </div>
 
                     <div class="download_btn">
-                        <button id="download_btn_action" type="button">Download card image</button>
+                        <button id="download_btn_action" type="button">Download card mockup</button>
                     </div>
                 </div>
             </div>

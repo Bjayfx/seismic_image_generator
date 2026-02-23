@@ -6,11 +6,14 @@ const specialtySelect = document.getElementById("specialty_input");
 
 // Card Elements
 const cardName = document.getElementById("profile_card_name");
+const headingName = document.getElementById("profile_heading_name");
 const cardImage = document.getElementById("profile_image");
 const cardMagBadge = document.getElementById("mag_frame_img");
 const cardRank = document.getElementById("profile_rank");
 const cardSpecialty = document.getElementById("profile_specialty");
+const cardSpecialtyText = document.getElementById("profile_specialty_text");
 const cardWrapper = document.getElementById("card_wrapper_target");
+const rankStripe = document.getElementById("rank_stripe");
 const exportTarget = document.getElementById("export_target");
 
 // Download Elements
@@ -18,45 +21,50 @@ const downloadBtn = document.getElementById("download_btn_action");
 
 const hasGeneratorElements =
     nameInput && imageUpload && rankSelect && specialtySelect &&
-    cardName && cardImage && cardMagBadge && cardRank && cardSpecialty &&
-    cardWrapper && exportTarget && downloadBtn;
+    cardName && headingName && cardImage && cardMagBadge && cardRank &&
+    cardSpecialty && cardSpecialtyText && cardWrapper && rankStripe && exportTarget && downloadBtn;
 
 if (hasGeneratorElements) {
-    const rankTone = {
-        "1": { accent: "#F7EAB7", glow: "rgba(247, 234, 183, 0.35)" },
-        "2": { accent: "#50E3C2", glow: "rgba(80, 227, 194, 0.35)" },
-        "3": { accent: "#7ED321", glow: "rgba(126, 211, 33, 0.35)" },
-        "4": { accent: "#BDFF8C", glow: "rgba(189, 255, 140, 0.35)" },
-        "5": { accent: "#B8E986", glow: "rgba(184, 233, 134, 0.35)" },
-        "6": { accent: "#F8E71C", glow: "rgba(248, 231, 28, 0.35)" },
-        "7": { accent: "#F5A623", glow: "rgba(245, 166, 35, 0.35)" },
-        "8": { accent: "#F1442E", glow: "rgba(241, 68, 46, 0.35)" },
-        "9": { accent: "#55CDFC", glow: "rgba(85, 205, 252, 0.35)" }
+    const magColors = {
+        "1": "#F7EAB7",
+        "2": "#50E3C2",
+        "3": "#7ED321",
+        "4": "#BDFF8C",
+        "5": "#B8E986",
+        "6": "#F8E71C",
+        "7": "#F5A623",
+        "8": "#F1442E",
+        "9": "#55CDFC"
     };
 
     const updateDisplayName = (value) => {
-        const normalized = value.trim();
-        cardName.textContent = normalized || "John Doe";
+        const normalized = value.trim() || "John Doe";
+        cardName.textContent = normalized;
+        headingName.textContent = normalized.toUpperCase();
+    };
+
+    const updateSpecialty = (value) => {
+        cardSpecialty.textContent = value;
+        cardSpecialtyText.textContent = value;
     };
 
     const updateRank = (rankValue) => {
         cardRank.textContent = `Mag ${rankValue}`;
         cardMagBadge.src = `mag_${rankValue}.png`;
 
-        const selectedTone = rankTone[rankValue] || rankTone["1"];
-        exportTarget.style.setProperty("--mag-accent", selectedTone.accent);
-        exportTarget.style.setProperty("--mag-accent-soft", selectedTone.glow);
+        const selectedColor = magColors[rankValue] || magColors["1"];
+        exportTarget.style.setProperty("--mag-accent", selectedColor);
+        exportTarget.style.setProperty("--mag-soft", `${selectedColor}55`);
+        rankStripe.style.background = selectedColor;
 
         cardWrapper.style.background = `
-            radial-gradient(circle at 85% 15%, ${selectedTone.glow}, transparent 34%),
-            radial-gradient(circle at 10% 90%, rgba(32, 125, 179, 0.25), transparent 30%),
-            repeating-radial-gradient(circle at 50% 50%, rgba(136, 199, 255, 0.08) 0 2px, transparent 2px 8px),
-            linear-gradient(145deg, #04152f 0%, #081f3b 50%, #031327 100%)
+            linear-gradient(130deg, rgba(255,255,255,0.92), rgba(245,245,245,0.86)),
+            radial-gradient(circle at 22% 20%, ${selectedColor}55, transparent 44%)
         `;
     };
 
     updateDisplayName(nameInput.value);
-    cardSpecialty.textContent = specialtySelect.value;
+    updateSpecialty(specialtySelect.value);
     updateRank(rankSelect.value);
 
     nameInput.addEventListener("input", (e) => updateDisplayName(e.target.value));
@@ -75,27 +83,26 @@ if (hasGeneratorElements) {
     });
 
     rankSelect.addEventListener("change", (e) => updateRank(e.target.value));
-
-    specialtySelect.addEventListener("change", (e) => {
-        cardSpecialty.textContent = e.target.value;
-    });
+    specialtySelect.addEventListener("change", (e) => updateSpecialty(e.target.value));
 
     downloadBtn.addEventListener("click", async () => {
         const originalText = downloadBtn.textContent;
-        downloadBtn.textContent = "Preparing card...";
+        downloadBtn.textContent = "Preparing image...";
         downloadBtn.disabled = true;
 
         try {
             const width = exportTarget.offsetWidth;
             const height = exportTarget.offsetHeight;
+            const scale = 3;
 
             const dataUrl = await domtoimage.toPng(exportTarget, {
                 quality: 1,
                 bgcolor: "transparent",
-                width: width * 2.5,
-                height: height * 2.5,
+                cacheBust: true,
+                width: width * scale,
+                height: height * scale,
                 style: {
-                    transform: "scale(2.5)",
+                    transform: `scale(${scale})`,
                     transformOrigin: "top left",
                     width: `${width}px`,
                     height: `${height}px`
@@ -108,7 +115,7 @@ if (hasGeneratorElements) {
 
             const safeName = (nameInput.value.trim() || "Seismic").replace(/\s+/g, "_");
             const link = document.createElement("a");
-            link.download = `${safeName}_card.png`;
+            link.download = `${safeName}_card_mockup.png`;
             link.href = objectUrl;
             document.body.appendChild(link);
             link.click();

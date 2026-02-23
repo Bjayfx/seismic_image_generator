@@ -43,43 +43,34 @@ header {
     width: 132px;
 }
 
-.right button,
-.btn_primary,
-.btn_secondary {
+.right button {
     border: none;
     color: white;
     padding: 10px 18px;
     border-radius: 24px;
     cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
+    background: #6f4828;
     transition: all ease-in-out 0.2s;
 }
 
-.right button,
-.btn_primary {
-    background: #6f4828;
-}
-
-.right button:hover,
-.btn_primary:hover {
+.right button:hover {
     background: #55351b;
 }
 
 .hero {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 64px 20px 50px;
+    padding: 62px 20px 50px;
     display: grid;
+    gap: 26px;
     grid-template-columns: 1.2fr 1fr;
-    gap: 28px;
 }
 
-.eyebrow {
+.hero_content .eyebrow {
     color: #7c5330;
     font-weight: 700;
-    margin-bottom: 10px;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
+    margin-bottom: 8px;
 }
 
 .hero_content h1 {
@@ -88,34 +79,29 @@ header {
     margin-bottom: 14px;
 }
 
-.description {
+.hero_content p {
+    color: #453826;
     max-width: 60ch;
     line-height: 1.6;
-    color: #453826;
 }
 
-.hero_actions {
+.cta {
     margin-top: 24px;
-    display: flex;
-    gap: 12px;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background: #6f4828;
+    padding: 11px 20px;
+    border-radius: 24px;
+    font-weight: 700;
 }
 
-.btn_secondary {
-    background: transparent;
-    border: 1px solid #6f4828;
-    color: #6f4828;
-}
-
-.btn_secondary:hover {
-    background: rgba(111, 72, 40, 0.1);
-}
-
-.features {
+.feature_grid {
     display: grid;
     gap: 12px;
 }
 
-.features article {
+.feature_grid article {
     padding: 16px;
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.65);
@@ -123,11 +109,11 @@ header {
     box-shadow: 0 10px 20px rgba(99, 69, 39, 0.12);
 }
 
-.features h3 {
+.feature_grid h3 {
     margin-bottom: 6px;
 }
 
-.features p {
+.feature_grid p {
     color: #51422e;
     line-height: 1.45;
 }
@@ -135,9 +121,5 @@ header {
 @media (max-width: 820px) {
     .hero {
         grid-template-columns: 1fr;
-    }
-
-    .hero_actions {
-        flex-wrap: wrap;
     }
 }
