@@ -13,6 +13,7 @@ const cardRank = document.getElementById("profile_rank");
 const cardSpecialty = document.getElementById("profile_specialty");
 const cardSpecialtyText = document.getElementById("profile_specialty_text");
 const cardWrapper = document.getElementById("card_wrapper_target");
+const rankStripe = document.getElementById("rank_stripe");
 const exportTarget = document.getElementById("export_target");
 
 // Download Elements
@@ -21,7 +22,7 @@ const downloadBtn = document.getElementById("download_btn_action");
 const hasGeneratorElements =
     nameInput && imageUpload && rankSelect && specialtySelect &&
     cardName && headingName && cardImage && cardMagBadge && cardRank &&
-    cardSpecialty && cardSpecialtyText && cardWrapper && exportTarget && downloadBtn;
+    cardSpecialty && cardSpecialtyText && cardWrapper && rankStripe && exportTarget && downloadBtn;
 
 if (hasGeneratorElements) {
     const magColors = {
@@ -54,6 +55,7 @@ if (hasGeneratorElements) {
         const selectedColor = magColors[rankValue] || magColors["1"];
         exportTarget.style.setProperty("--mag-accent", selectedColor);
         exportTarget.style.setProperty("--mag-soft", `${selectedColor}55`);
+        rankStripe.style.background = selectedColor;
 
         cardWrapper.style.background = `
             linear-gradient(130deg, rgba(255,255,255,0.92), rgba(245,245,245,0.86)),
@@ -95,6 +97,8 @@ if (hasGeneratorElements) {
 
             const dataUrl = await domtoimage.toPng(exportTarget, {
                 quality: 1,
+                bgcolor: "transparent",
+                cacheBust: true,
                 width: width * scale,
                 height: height * scale,
                 style: {
